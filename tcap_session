@@ -1,0 +1,11 @@
+Pdu tcap_pdu Proto tcap Transport camel/sccp/mtp3 {
+        Extract tcapid From tcap.tid;
+        Extract cameltype From camel.local;
+};
+
+Gop tcap_session On tcap_pdu Match (tcapid) {
+        Start (cameltype=0);
+        Stop (cameltype=24);
+};
+
+Done;
